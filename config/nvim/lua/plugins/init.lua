@@ -5,15 +5,17 @@ local plugins = {
 
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	lazy = true,
+		build =
+		"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		lazy = true,
 	},
+
 	{
 
-	"nvim-telescope/telescope.nvim",
-	dependencies = {
-"nvim-telescope/telescope-fzf-native.nvim",
-	}
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
 	},
 
 	{
@@ -22,6 +24,7 @@ local plugins = {
 			require("gitsigns").setup()
 		end,
 	},
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
@@ -33,14 +36,16 @@ local plugins = {
 			scope = { enabled = false },
 		},
 	},
+
 	{
-	"windwp/nvim-autopairs",
-	event = "InsertEnter",
-	opts={}
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {},
 	},
+
 	{
 		"numToStr/Comment.nvim",
-		opts = {}
+		opts = {},
 	},
 }
 
