@@ -1,8 +1,4 @@
 return {
-
-	-- "hrsh7th/cmp-nvim-lsp",
-	-- "hrsh7th/cmp-buffer",
-
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
@@ -34,16 +30,19 @@ return {
 					require("lspconfig")[server_name].setup {}
 				end,
 			}
-			-- require("nvim-lspconfig").setup()
 		end,
 	},
+
 	{
 		"nvimtools/none-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local null_ls = require "null-ls"
 			null_ls.setup {
-				sources = null_ls.builtins.formatting.stylua,
+				sources = {
+					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.formatting.ptop
+				},
 				on_attach = function(client, bufnr)
 					local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 					if client.supports_method "textDocument/formatting" then
@@ -60,7 +59,6 @@ return {
 						})
 					end
 				end,
-				-- on_attach = setup_autosave,
 			}
 		end,
 	},
