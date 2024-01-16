@@ -1,52 +1,76 @@
 local plugins = {
 
-	"nvim-lua/plenary.nvim",
-	"nvim-treesitter/nvim-treesitter",
+    "nvim-lua/plenary.nvim",
 
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build =
-		"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-		lazy = true,
-	},
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                ensure_installed = { "lua", "pascal", "cpp", "bash" },
+                highlight = { enable = true },
+            }
+        end,
+    },
 
-	{
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        lazy = true,
+    },
 
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
-	},
+    {
 
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	},
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-telescope/telescope-fzf-native.nvim",
+        },
+        config = function()
+            -- local actions = require "telescope.actions"
+            -- require("telescope").setup {
+            --     defaults = {
+            --         mappings = {
+            --             n = { ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble },
+            --         },
+            --     },
+            -- }
+        end,
+    },
 
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {
-			indent = {
-				char = "│",
-				tab_char = "│",
-			},
-			scope = { enabled = false },
-		},
-	},
+    {
+        "lewis6991/gitsigns.nvim",
+        lazy = true,
+        event = "InsertEnter",
+        -- config = function()
+        --     require("gitsigns").setup()
+        -- end,
+        opts = {},
+    },
 
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {},
-	},
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {
+            indent = {
+                char = "│",
+                tab_char = "│",
+            },
+            scope = { enabled = false },
+        },
+    },
 
-	{
-		"numToStr/Comment.nvim",
-		opts = {},
-	},
+    {
+        "windwp/nvim-autopairs",
+        lazy = true,
+        event = "InsertEnter",
+        opts = {},
+    },
+
+    {
+        "numToStr/Comment.nvim",
+        lazy = true,
+        event = "InsertEnter",
+        opts = {},
+    },
 }
 
 return plugins
