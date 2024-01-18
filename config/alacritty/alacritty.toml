@@ -1,0 +1,5 @@
+import = ["/home/main/.config/alacritty/themes/themes/catppuccin_macchiato.toml"]
+
+[window.padding]
+x = 0
+y = 10
