@@ -57,7 +57,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         config = function()
-            require("mason").setup()
+            require("mason").setup { ui = { border = "rounded" } }
             require("mason-lspconfig").setup { ensure_installed = { "lua_ls", "bashls" } }
             require("mason-lspconfig").setup_handlers {
                 function(server_name)
@@ -138,6 +138,9 @@ return {
                             }
                         end,
                     },
+                    -- bash = {
+                    -- 	formatter.filetypes.bash.
+                    -- }
                 },
             }
         end,
@@ -149,7 +152,7 @@ return {
         event = "BufEnter",
         config = function()
             local lint = require "lint"
-            lint.linters_by_ft = { lua = { "luacheck" }, cpp = { "cpplint" } }
+            lint.linters_by_ft = { lua = { "luacheck" }, cpp = { "cpplint" }, bash = { "shellcheck" } }
         end,
     },
 
