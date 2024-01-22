@@ -15,3 +15,6 @@ edit_config() {
 
 alias ec="edit_config"
 
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+

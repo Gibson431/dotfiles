@@ -1,5 +1,10 @@
 import = ["/home/main/.config/alacritty/themes/themes/catppuccin_macchiato.toml"]
 
+
+[font.normal]
+family= "JetBrainsMono NF"
+style="Regular"
+
 [window.padding]
 x = 0
-y = 10
+y = 0
