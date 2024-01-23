@@ -55,6 +55,7 @@ local normal_mappings = {
             r = { vim.lsp.buf.rename, "Rename" },
             t = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
         },
+        e = { "<cmd>NvimTreeToggle<cr>", "Toggle nvim-tree" },
     },
 }
 
