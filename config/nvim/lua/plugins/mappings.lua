@@ -22,6 +22,7 @@ local normal_mappings = {
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
             r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
             R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+            S = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
             u = {
                 "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
                 "Undo Stage Hunk",
@@ -29,7 +30,7 @@ local normal_mappings = {
             o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
             b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-            s = { "<cmd>Telescope git_status<cr>", "Stage Hunk" },
+            s = { "<cmd>Telescope git_status<cr>", "Git Status" },
             d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
         },
         f = {
