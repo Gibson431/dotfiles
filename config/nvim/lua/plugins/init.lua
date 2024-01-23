@@ -49,7 +49,9 @@ local plugins = {
 
             -- optionally enable 24-bit colour
             vim.opt.termguicolors = true
-            require("nvim-tree").setup {}
+            require("nvim-tree").setup {
+                git = { ignore = false },
+            }
         end,
     },
 
