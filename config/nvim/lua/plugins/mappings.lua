@@ -23,10 +23,7 @@ local normal_mappings = {
             r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
             R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
             S = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-            u = {
-                "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-                "Undo Stage Hunk",
-            },
+            u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
             o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
             b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -41,10 +38,7 @@ local normal_mappings = {
             f = { "<cmd>Telescope find_files<cr>", "Find Files" },
             g = { "<cmd>Telescope git_files<cr>", "Git Files" },
         },
-        ["?"] = {
-            name = "Config",
-            c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        },
+        ["?"] = { name = "Config", c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" } },
         l = {
             name = "LSP",
             a = { vim.lsp.buf.code_action, "Code Action" },
