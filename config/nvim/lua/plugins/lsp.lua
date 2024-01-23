@@ -138,9 +138,9 @@ return {
                             }
                         end,
                     },
-                    -- bash = {
-                    -- 	formatter.filetypes.bash.
-                    -- }
+                    sh = {
+                        require("formatter.filetypes.sh").shfmt,
+                    },
                 },
             }
         end,
