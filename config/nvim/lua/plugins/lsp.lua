@@ -80,6 +80,8 @@ return {
                     -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
                 end,
             })
+
+            require("lspconfig.ui.windows").default_options.border = "rounded"
         end,
     },
 
