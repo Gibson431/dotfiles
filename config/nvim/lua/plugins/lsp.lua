@@ -58,12 +58,47 @@ return {
         },
         config = function()
             require("lspconfig.ui.windows").default_options.border = "rounded"
+            local lspconfig = require "lspconfig"
+            local util = require "lspconfig.util"
+            local root_files = {
+                ".platformio",
+            }
+            -- lspconfig.clangd_pio = {
+            --     default_config = {
+            --         cmd = {
+            --             "/home/main/Documents/git/llvm-project/build/bin/clangd",
+            --             "--background-index",
+            --             "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
+            --             "--log=verbose",
+            --         },
+            --         filetypes = { "c", "cpp", "h", "hpp" },
+            --         root_dir = util.root_pattern(unpack(root_files)),
+            --     },
+            --     docs = {},
+            -- }
+            -- lspconfig["clangd_pio"].setup {}
+            local lsp_configurations = require "lspconfig.configs"
+            if not lsp_configurations.pio then
+                lsp_configurations.pio = {
+                    default_config = {
+                        name = "pio",
+                        cmd = {
+                            "/home/main/Documents/git/llvm-project/build/bin/clangd",
+                            "--background-index",
+                            "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
+                            "--log=verbose",
+                        },
+                        filetypes = { "c", "cpp" },
+                        root_dir = require("lspconfig.util").root_pattern ".platformio",
+                    },
+                }
+            end
 
             require("mason").setup { ui = { border = "rounded" } }
             require("mason-lspconfig").setup { ensure_installed = { "lua_ls", "bashls" } }
             require("mason-lspconfig").setup_handlers {
                 function(server_name)
-                    require("lspconfig")[server_name].setup {}
+                    lspconfig[server_name].setup {}
                 end,
             }
             local vim = vim
@@ -83,17 +118,20 @@ return {
                 end,
             })
 
-            vim.tbl_deep_extend("keep", require "lspconfig", {
-                clangd_pio = {
-                    cmd = {
-                        "/home/main/Documents/llvm-project/build/bin/clangd",
-                        "--background-index",
-                        "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
-                        "--log=verbose",
-                    },
-                    filetype = { "c", "cpp", "h", "hpp" },
-                },
-            })
+            lspconfig["pio"].setup {}
+
+            -- lspconfig.clangd_pio.setup {
+            --     cmd = {
+            --         "/home/main/Documents/git/llvm-project/build/bin/clangd",
+            --         "--background-index",
+            --         "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
+            --         "--log=verbose",
+            --     },
+            --     filetypes = { "c", "cpp", "h", "hpp" },
+            --     root_dir = function(fname)
+            --         return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+            --     end,
+            -- }
         end,
     },
 
