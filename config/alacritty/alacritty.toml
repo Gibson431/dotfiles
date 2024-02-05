@@ -1,5 +1,7 @@
-import = ["/home/main/.config/alacritty/themes/themes/catppuccin_macchiato.toml"]
+import = ["~/.config/alacritty/alacritty-theme/themes/catppuccin_macchiato.toml"]
 
+[env]
+TERM = "xterm-256color"
 
 [font.normal]
 family= "JetBrainsMono NF"
