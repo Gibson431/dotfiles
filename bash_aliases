@@ -12,9 +12,17 @@ edit_config() {
 	nvim .
 	cd "$directory" || return
 }
-
 alias ec="edit_config"
+
+edit_vim_config() {
+	directory=$PWD
+	cd "$DOTFILES/config/nvim" || return
+	nvim .
+	cd "$directory" || return
+}
+alias evc="edit_vim_config"
 
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
 
+echo "Sourced custom bash profile"

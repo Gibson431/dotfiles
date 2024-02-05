@@ -57,6 +57,8 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         config = function()
+            require("lspconfig.ui.windows").default_options.border = "rounded"
+
             require("mason").setup { ui = { border = "rounded" } }
             require("mason-lspconfig").setup { ensure_installed = { "lua_ls", "bashls" } }
             require("mason-lspconfig").setup_handlers {
@@ -81,7 +83,17 @@ return {
                 end,
             })
 
-            require("lspconfig.ui.windows").default_options.border = "rounded"
+            vim.tbl_deep_extend("keep", require "lspconfig", {
+                clangd_pio = {
+                    cmd = {
+                        "/home/main/Documents/llvm-project/build/bin/clangd",
+                        "--background-index",
+                        "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
+                        "--log=verbose",
+                    },
+                    filetype = { "c", "cpp", "h", "hpp" },
+                },
+            })
         end,
     },
 
@@ -142,6 +154,9 @@ return {
                     },
                     sh = {
                         require("formatter.filetypes.sh").shfmt,
+                    },
+                    cpp = {
+                        require("formatter.filetypes.cpp").clangformat,
                     },
                 },
             }
