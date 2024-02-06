@@ -24,5 +24,3 @@ alias evc="edit_vim_config"
 
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
-
-echo "Sourced custom bash profile"
