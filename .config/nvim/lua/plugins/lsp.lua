@@ -63,20 +63,6 @@ return {
             local root_files = {
                 ".platformio",
             }
-            -- lspconfig.clangd_pio = {
-            --     default_config = {
-            --         cmd = {
-            --             "/home/main/Documents/git/llvm-project/build/bin/clangd",
-            --             "--background-index",
-            --             "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
-            --             "--log=verbose",
-            --         },
-            --         filetypes = { "c", "cpp", "h", "hpp" },
-            --         root_dir = util.root_pattern(unpack(root_files)),
-            --     },
-            --     docs = {},
-            -- }
-            -- lspconfig["clangd_pio"].setup {}
             local lsp_configurations = require "lspconfig.configs"
             if not lsp_configurations.pio then
                 lsp_configurations.pio = {
@@ -85,7 +71,7 @@ return {
                         cmd = {
                             "/home/main/Documents/git/llvm-project/build/bin/clangd",
                             "--background-index",
-                            "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
+                            -- "--query-driver=/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/main/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*,xtensa-esp32-elf-gcc*,xtensa-esp32-elf-g++*",
                             "--log=verbose",
                         },
                         filetypes = { "c", "cpp" },
