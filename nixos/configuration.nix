@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -9,7 +6,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
   ];
 
   # Bootloader.
@@ -129,37 +125,37 @@
   home-manager.users.main = {pkgs, ...}: {
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = with pkgs; [
-      firefox
-      thunderbird
-      google-chrome
-      alacritty
-      spotify
-      stow
-      tmux
-      gqrx
-    ];
-
-    programs.ssh = {
-      enable = true;
-      forwardAgent = true;
-      extraConfig = "IdentityAgent ~/.1password/agent.sock";
-    };
-
-    programs.git = {
-      package = pkgs.gitAndTools.gitFull;
-      enable = true;
-      userName = "Tim Gibson";
-      userEmail = "timmaxgibson@gmail.com";
-      # includes = [{path = "~/.gitconfig.default";}];
-      extraConfig = {
-        core.editor = "nvim";
-        gpg.format = "ssh";
-        gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
-        commit.gpgsign = true;
-        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICgECjvqME2XcDTN8e9X9tGtj3yo4IU6rjm5m7SDo7dw";
-      };
-    };
+    # home.packages = with pkgs; [
+    #   firefox
+    #   thunderbird
+    #   google-chrome
+    #   alacritty
+    #   spotify
+    #   stow
+    #   tmux
+    #   gqrx
+    # ];
+    #
+    # programs.ssh = {
+    #   enable = true;
+    #   forwardAgent = true;
+    #   extraConfig = "IdentityAgent ~/.1password/agent.sock";
+    # };
+    #
+    # programs.git = {
+    #   package = pkgs.gitAndTools.gitFull;
+    #   enable = true;
+    #   userName = "Tim Gibson";
+    #   userEmail = "timmaxgibson@gmail.com";
+    #   # includes = [{path = "~/.gitconfig.default";}];
+    #   extraConfig = {
+    #     core.editor = "nvim";
+    #     gpg.format = "ssh";
+    #     gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+    #     commit.gpgsign = true;
+    #     user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICgECjvqME2XcDTN8e9X9tGtj3yo4IU6rjm5m7SDo7dw";
+    #   };
+    # };
     #
     # systemd.user.services = {
     #   polkit-gnome-authentication-agent-1 = {
