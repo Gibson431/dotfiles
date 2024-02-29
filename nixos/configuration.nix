@@ -139,29 +139,50 @@
       stow
       tmux
 	  gqrx
-    _1password
-    _1password-gui
 	];
 
   	programs.ssh = {
       enable = true;
-      extraConfig = ''
-      Host *
-    	IdentitiesOnly=yes
-        IdentityAgent ${pkgs._1password-gui}/bin/op-ssh-sign}
-      '';
+	  forwardAgent = true;
+      extraConfig = "IdentityAgent ~/.1password/agent.sock"; 
 	};
 
 	programs.git = {
 		package = pkgs.gitAndTools.gitFull;
 		enable = true;
-		userEmail = "timmaxgibson@gmail.com";
 		userName = "Tim Gibson";
-		includes = [{path = "~/.gitconfig";}];
+		userEmail = "timmaxgibson@gmail.com";
+		# includes = [{path = "~/.gitconfig.default";}];
 		extraConfig = {
+			core.editor = "nvim";
+			gpg.format = "ssh";
 			gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+			commit.gpgsign = true;
+			user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICgECjvqME2XcDTN8e9X9tGtj3yo4IU6rjm5m7SDo7dw";
 		};
 	};
+#
+# systemd.user.services = {
+#   polkit-gnome-authentication-agent-1 = {
+#     Unit = {
+#       After = [ "graphical-session-pre.target" ];
+#       Description = "polkit-gnome-authentication-agent-1";
+#       PartOf = [ "graphical-session.target" ];
+#     };
+#
+#     Service = {
+#       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+#       Restart = "on-failure";
+#       RestartSec = 1;
+#       TimeoutStopSec = 10;
+#       Type = "simple";
+#     };
+#
+#     Install = {
+#       WantedBy = [ "graphical-session.target" ];
+#     };
+#   };
+# };
 
 	home.stateVersion = "23.11";
   };
@@ -194,7 +215,14 @@
       enable = true;
       defaultEditor = true;
     };
+    _1password.enable = true;
+    _1password-gui = {
+	  package = pkgs._1password-gui;
+	  enable = true;
+	  polkitPolicyOwners = ["main"];
+	};
   };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
