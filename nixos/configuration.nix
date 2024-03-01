@@ -141,6 +141,7 @@
     gcc
     nodejs
     gnome.gnome-boxes
+    ccls
   ];
 
   # Change default programs
