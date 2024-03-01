@@ -21,6 +21,3 @@ edit_vim_config() {
 	cd "$directory" || return
 }
 alias evc="edit_vim_config"
-
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
