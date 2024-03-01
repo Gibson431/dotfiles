@@ -35,6 +35,7 @@
     starship
     tmux-sessionizer
     vscode
+    direwolf
   ];
   programs.ssh = {
     enable = true;
