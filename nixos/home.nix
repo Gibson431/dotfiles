@@ -33,6 +33,7 @@
     tmux
     gqrx
     starship
+    tmux-sessionizer
   ];
   programs.ssh = {
     enable = true;
