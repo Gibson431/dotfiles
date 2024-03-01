@@ -36,7 +36,9 @@
     tmux-sessionizer
     vscode
     direwolf
+    platformio-core
   ];
+
   programs.ssh = {
     enable = true;
     forwardAgent = true;
