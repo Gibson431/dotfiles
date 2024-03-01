@@ -94,6 +94,11 @@
     #media-session.enable = true;
   };
 
+  services.udev.packages = with pkgs; [
+    platformio-core
+    openocd
+  ];
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
