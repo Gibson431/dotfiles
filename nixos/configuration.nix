@@ -101,21 +101,13 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.main = {
     isNormalUser = true;
     description = "main";
-    extraGroups = ["networkmanager" "wheel"];
-    #  packages = with pkgs; [
-    #    firefox
-    #    thunderbird
-    #    google-chrome
-    #    alacritty
-    #    spotify
-    #    stow
-    #    tmux
-    # gqrx
-    #  ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
   # Allow unfree packages
@@ -124,61 +116,6 @@
   home-manager.useGlobalPkgs = true;
   home-manager.users.main = {pkgs, ...}: {
     nixpkgs.config.allowUnfree = true;
-
-    # home.packages = with pkgs; [
-    #   firefox
-    #   thunderbird
-    #   google-chrome
-    #   alacritty
-    #   spotify
-    #   stow
-    #   tmux
-    #   gqrx
-    # ];
-    #
-    # programs.ssh = {
-    #   enable = true;
-    #   forwardAgent = true;
-    #   extraConfig = "IdentityAgent ~/.1password/agent.sock";
-    # };
-    #
-    # programs.git = {
-    #   package = pkgs.gitAndTools.gitFull;
-    #   enable = true;
-    #   userName = "Tim Gibson";
-    #   userEmail = "timmaxgibson@gmail.com";
-    #   # includes = [{path = "~/.gitconfig.default";}];
-    #   extraConfig = {
-    #     core.editor = "nvim";
-    #     gpg.format = "ssh";
-    #     gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
-    #     commit.gpgsign = true;
-    #     user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICgECjvqME2XcDTN8e9X9tGtj3yo4IU6rjm5m7SDo7dw";
-    #   };
-    # };
-    #
-    # systemd.user.services = {
-    #   polkit-gnome-authentication-agent-1 = {
-    #     Unit = {
-    #       After = [ "graphical-session-pre.target" ];
-    #       Description = "polkit-gnome-authentication-agent-1";
-    #       PartOf = [ "graphical-session.target" ];
-    #     };
-    #
-    #     Service = {
-    #       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    #       Restart = "on-failure";
-    #       RestartSec = 1;
-    #       TimeoutStopSec = 10;
-    #       Type = "simple";
-    #     };
-    #
-    #     Install = {
-    #       WantedBy = [ "graphical-session.target" ];
-    #     };
-    #   };
-    # };
-
     home.stateVersion = "23.11";
   };
 
