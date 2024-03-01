@@ -43,9 +43,10 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.UTF-8";
-  # i18n.supportedLocales = ["en_AU.UTF-8/UTF-8"];
+  i18n.supportedLocales = ["en_AU.UTF-8/UTF-8"];
 
   i18n.extraLocaleSettings = {
+    LC_ALL = "";
     LC_ADDRESS = "en_AU.UTF-8";
     LC_IDENTIFICATION = "en_AU.UTF-8";
     LC_MEASUREMENT = "en_AU.UTF-8";
@@ -55,7 +56,6 @@
     LC_PAPER = "en_AU.UTF-8";
     LC_TELEPHONE = "en_AU.UTF-8";
     LC_TIME = "en_AU.UTF-8";
-    LC_ALL = "en_AU.UTF-8";
   };
 
   # Enable the X11 windowing system.
