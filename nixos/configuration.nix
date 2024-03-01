@@ -140,6 +140,7 @@
     rustup
     gcc
     nodejs
+    gnome.gnome-boxes
   ];
 
   # Change default programs
