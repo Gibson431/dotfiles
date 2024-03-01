@@ -34,6 +34,7 @@
     gqrx
     starship
     tmux-sessionizer
+    vscode
   ];
   programs.ssh = {
     enable = true;
