@@ -145,6 +145,7 @@
     ccls
     virt-manager
     usbutils
+    python3
   ];
 
   # Change default programs
