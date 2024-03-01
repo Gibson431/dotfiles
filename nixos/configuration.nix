@@ -108,7 +108,7 @@
   users.users.main = {
     isNormalUser = true;
     description = "main";
-    extraGroups = ["networkmanager" "wheel" "docker" "kvm"];
+    extraGroups = ["networkmanager" "wheel" "docker" "kvm" "dialout"];
   };
 
   # Allow unfree packages
@@ -144,6 +144,7 @@
     gnome.gnome-boxes
     ccls
     virt-manager
+    usbutils
   ];
 
   # Change default programs
