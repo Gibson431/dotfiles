@@ -102,12 +102,13 @@
   security.sudo.wheelNeedsPassword = false;
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.main = {
     isNormalUser = true;
     description = "main";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "kvm"];
   };
 
   # Allow unfree packages
@@ -142,6 +143,7 @@
     nodejs
     gnome.gnome-boxes
     ccls
+    virt-manager
   ];
 
   # Change default programs
