@@ -43,7 +43,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.UTF-8";
-  i18n.supportedLocales = ["en_AU.UTF-8/UTF-8"];
+  # i18n.supportedLocales = ["en_AU.UTF-8/UTF-8"];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_AU.UTF-8";
@@ -166,6 +166,11 @@
       package = pkgs._1password-gui;
       enable = true;
       polkitPolicyOwners = ["main"];
+    };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
     };
   };
 

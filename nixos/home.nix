@@ -37,6 +37,7 @@
     vscode
     direwolf
     platformio-core
+    zoom-us
   ];
 
   programs.ssh = {
