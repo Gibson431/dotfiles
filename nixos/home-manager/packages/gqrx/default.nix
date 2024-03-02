@@ -1,5 +1,6 @@
-{...}: {
-  programs.gqrx = {
-    enable = true;
-  };
+{pkgs, ...}: {
+  home.packages = [pkgs.gqrx];
+  # programs.gqrx = {
+  #   enable = true;
+  # };
 }

@@ -1,8 +1,8 @@
-{...}:{
-imports = [
+{...}: {
+  imports = [
     ./firefox
-	./git
-	./ssh
+    ./git
+    ./ssh
     ./thunderbird
     ./google-chrome
     ./alacritty
@@ -16,5 +16,5 @@ imports = [
     ./direwolf
     ./platformio
     ./zoom-us
-];
+  ];
 }
