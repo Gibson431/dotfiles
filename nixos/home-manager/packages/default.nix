@@ -2,22 +2,27 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+with lib; let
   currentDir = ./.;
-  readDir = builtins.readDir currentDir;
+  files = dir:
+    lib.attrsets.mapAttrsToList
+    (name: value:
+      if value == "directory"
+      then "././${name}"
+      else null)
+    (builtins.readDir dir);
 
-  isDirectory = name: type: type == "directory";
+  packages = dir: filter (file: ! isNull file) (files dir);
 
-  directories = builtins.filter (name: type: isDirectory name (builtins.getAttr name readDir)) (builtins.attrNames readDir);
-
-  importIfExists = dir: let
-    defaultNixPath = "${dir}/default.nix";
+  importDirectory = dir: let
+    dirPath = "${currentDir}/${dir}";
   in
-    if builtins.pathExists defaultNixPath
-    then import defaultNixPath
+    if builtins.pathExists dirPath
+    then import dirPath
     else {};
 
-  packages = builtins.map importIfExists directories;
+  importedPackages = dir: builtins.map importDirectory (packages dir);
 in {
-  inherit packages;
+  imports = importedPackages ./.;
 }
