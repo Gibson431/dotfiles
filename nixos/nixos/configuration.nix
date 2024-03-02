@@ -152,23 +152,17 @@
   ];
 
   # Change default programs
-  programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-    _1password.enable = true;
-    _1password-gui = {
-      package = pkgs._1password-gui;
-      enable = true;
-      polkitPolicyOwners = ["main"];
-    };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-  };
+  # programs = {
+  #   neovim = {
+  #     enable = true;
+  #     defaultEditor = true;
+  #   };
+  #   steam = {
+  #     enable = true;
+  #     remotePlay.openFirewall = true;
+  #     dedicatedServer.openFirewall = true;
+  #   };
+  # };
 
   fonts.packages = with pkgs; [
     nerdfonts
