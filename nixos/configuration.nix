@@ -84,6 +84,10 @@
     #media-session.enable = true;
   };
 
+  hardware.opengl = {
+    enable = true;
+  };
+
   services.udev.packages = with pkgs; [
     platformio-core
     openocd
