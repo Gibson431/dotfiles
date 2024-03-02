@@ -21,3 +21,5 @@ edit_vim_config() {
 	cd "$directory" || return
 }
 alias evc="edit_vim_config"
+
+alias rebuild="rebuild.bash"
