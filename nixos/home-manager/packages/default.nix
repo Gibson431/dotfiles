@@ -9,7 +9,7 @@ with lib; let
     lib.attrsets.mapAttrsToList
     (name: value:
       if value == "directory"
-      then "././${name}"
+      then "${name}"
       else null)
     (builtins.readDir dir);
 
