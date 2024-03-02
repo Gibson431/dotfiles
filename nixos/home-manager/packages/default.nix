@@ -22,7 +22,7 @@ with lib; let
     then import dirPath
     else {};
 
-  importedPackages = dir: builtins.map importDirectory (packages dir);
+  importedPackages = builtins.map importDirectory (packages currentDir);
 in {
-  imports = importedPackages ./.;
+  imports = importedPackages;
 }
