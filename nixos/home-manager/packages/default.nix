@@ -14,7 +14,7 @@ imports = [
     ./tmux-sessionizer
     ./vscode
     ./direwolf
-    ./platformio-core
+    ./platformio
     ./zoom-us
 ];
 }
