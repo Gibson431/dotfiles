@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./packages
+  ];
+
   # TODO please change the username & home directory to your own
   home.username = "main";
   home.homeDirectory = "/home/main";
@@ -23,22 +27,10 @@
   # '';
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
-    firefox
-    thunderbird
-    google-chrome
-    alacritty
-    spotify
-    stow
-    tmux
-    gqrx
-    starship
-    tmux-sessionizer
-    vscode
-    direwolf
-    platformio-core
-    zoom-us
-  ];
+  # home.packages = [
+  #   import
+  #   ./packages
+  # ];
 
   programs.ssh = {
     enable = true;
