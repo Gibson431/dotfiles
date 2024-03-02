@@ -1,0 +1,5 @@
+{...}: {
+  programs.direwolf = {
+    enable = true;
+  };
+}

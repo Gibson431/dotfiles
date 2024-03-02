@@ -1,0 +1,5 @@
+{...}: {
+  programs.gqrx = {
+    enable = true;
+  };
+}

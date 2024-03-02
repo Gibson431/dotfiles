@@ -1,0 +1,5 @@
+{...}: {
+  programs.spotify = {
+    enable = true;
+  };
+}

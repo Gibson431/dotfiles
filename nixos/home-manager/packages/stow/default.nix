@@ -1,0 +1,5 @@
+{...}: {
+  programs.stow = {
+    enable = true;
+  };
+}
