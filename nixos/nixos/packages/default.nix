@@ -1,8 +1,7 @@
-{...}:{
-imports = [
-./1password
-./neovim
-./steam
-./
-];
+{...}: {
+  imports = [
+    ./1password
+    ./neovim
+    ./steam
+  ];
 }

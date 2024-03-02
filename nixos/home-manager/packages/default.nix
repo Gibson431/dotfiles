@@ -1,4 +1,8 @@
-{pkgs ? import <nixpkgs> {}}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   currentDir = ./.;
   readDir = builtins.readDir currentDir;
 
