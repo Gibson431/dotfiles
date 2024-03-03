@@ -132,23 +132,23 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     glibcLocales
-    git
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # git
+    # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neofetch
     wget
-    _1password
-    _1password-gui
-    gnome.gnome-tweaks
+    # _1password
+    # _1password-gui
+    # gnome.gnome-tweaks
     alejandra
     rustup
     gcc
     nodejs
-    gnome.gnome-boxes
+    # gnome.gnome-boxes
     ccls
     virt-manager
     usbutils
     python3
-    obs-studio
+    # obs-studio
   ];
 
   # Change default programs
