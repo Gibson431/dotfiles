@@ -23,7 +23,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/A8CC-3819";
+    device = "/dev/disk/by-partlabel/boot";
     fsType = "vfat";
   };
 
