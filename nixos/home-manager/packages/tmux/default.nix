@@ -1,5 +1,6 @@
-{...}: {
-  programs.firefox = {
-    enable = true;
-  };
+{pkgs, ...}: {
+  # programs.tmux = {
+  #   enable = true;
+  # };
+  home.packages = [pkgs.tmux];
 }
