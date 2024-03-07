@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [
-    pkgs.yuzuPackages.mainline
-  ];
+  # home.packages = [
+  #   pkgs.yuzuPackages.mainline
+  # ];
 }
