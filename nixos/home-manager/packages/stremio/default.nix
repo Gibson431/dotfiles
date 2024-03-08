@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs.stremio
+    pkgs.unstable.stremio
   ];
 }
