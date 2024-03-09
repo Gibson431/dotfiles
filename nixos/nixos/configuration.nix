@@ -95,7 +95,7 @@
   };
 
   services.udev.packages = with pkgs; [
-    platformio-core
+    unstable.platformio-core
     openocd
   ];
 
@@ -159,6 +159,8 @@
     usbutils
     python3
     python311Packages.pip
+    unstable.platformio-core
+    esptool
     # obs-studio
   ];
 
