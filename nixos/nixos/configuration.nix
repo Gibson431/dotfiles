@@ -159,6 +159,7 @@
     usbutils
     python3
     python311Packages.pip
+    python311Packages.stdenv
     unstable.platformio-core
     esptool
     # obs-studio
