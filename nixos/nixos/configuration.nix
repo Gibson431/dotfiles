@@ -160,7 +160,7 @@
     python3
     python311Packages.pip
     python311Packages.stdenv
-    unstable.platformio-core
+    unstable.platformio
     esptool
     # obs-studio
   ];
