@@ -158,6 +158,7 @@
     virt-manager
     usbutils
     python3
+    python311Packages.pip
     # obs-studio
   ];
 
