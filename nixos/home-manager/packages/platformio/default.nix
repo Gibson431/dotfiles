@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.platformio-core];
+  home.packages = [pkgs.unstable.platformio-core];
   # programs.platformio-core = {
   #   enable = true;
   # };
