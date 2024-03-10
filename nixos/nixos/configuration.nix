@@ -162,6 +162,7 @@
     python311Packages.stdenv
     unstable.platformio
     esptool
+    blueman
     # obs-studio
   ];
 
