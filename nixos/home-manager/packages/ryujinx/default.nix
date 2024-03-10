@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs.ryujinx
+    pkgs.unstable.ryujinx
   ];
 }
