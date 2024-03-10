@@ -48,7 +48,7 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidiaBeta"];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
