@@ -5,7 +5,7 @@ alejandra . &>alejandra.log || (cat alejandra.log && false)
 git diff -U0 *.nix
 echo "NixOS Rebuilding ... "
 git add .
-git commit -am "temp commit"
+git commit -am "temp commit" &>/dev/null
 if sudo nixos-rebuild switch --flake . &>nixos-switch.log; then
 	gen=$(nixos-rebuild list-generations | grep current)
 	git reset HEAD~
