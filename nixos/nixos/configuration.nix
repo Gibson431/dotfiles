@@ -119,7 +119,16 @@
   users.users.main = {
     isNormalUser = true;
     description = "main";
-    extraGroups = ["networkmanager" "wheel" "docker" "kvm" "dialout"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "kvm"
+      "dialout"
+      "lock"
+      "uucp"
+      "plugdev"
+    ];
   };
 
   # Allow unfree packages
