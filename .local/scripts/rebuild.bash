@@ -1,7 +1,7 @@
 set -e
 pushd ~/dotfiles/nixos/
 nvim .
-alejandra . &>/dev/null
+alejandra . &>alejandra.log || (cat alejandra.log && false)
 git diff -U0 *.nix
 echo "NixOS Rebuilding ... "
 git add .
