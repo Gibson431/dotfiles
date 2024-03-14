@@ -151,7 +151,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     glibcLocales
-    # git
+    git
     # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neofetch
     wget
@@ -172,6 +172,7 @@
     unstable.platformio
     esptool
     blueman
+    # ssh
     # obs-studio
   ];
 
