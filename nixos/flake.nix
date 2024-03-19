@@ -22,8 +22,14 @@
       #   config.allowUnfree = true;
       # };
     };
+    common-modules = [
+      ({...}: {nixpkgs.overlays = [overlay-unstable];})
+      ./nixos
+      home-manager.nixosModules.home-manager
+      ./home-manager
+    ];
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       # specialArgs = {inherit unstable;};
       modules = [
@@ -31,7 +37,13 @@
         ./nixos
         home-manager.nixosModules.home-manager
         ./home-manager
+        ./hardware/pc-configuration.nix
       ];
+    };
+    nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      # specialArgs = {inherit unstable;};
+      modules = common-modules ++ [./hardware/zenbook-configuration.nix];
     };
   };
 }

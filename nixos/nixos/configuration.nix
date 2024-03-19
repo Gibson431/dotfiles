@@ -3,10 +3,10 @@
   pkgs,
   ...
 }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  # imports = [
+  # Include the results of the hardware scan.
+  # ./hardware-configuration.nix
+  # ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -28,7 +28,6 @@
     randomizedDelaySec = "45min";
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -172,6 +171,7 @@
     unstable.platformio
     esptool
     blueman
+
     # ssh
     # obs-studio
   ];
