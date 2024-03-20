@@ -4,10 +4,10 @@
     tmux
     tmux-sessionizer
     thunderbird
-    unstable.stremio
+    stremio
     stow
     spotify
-    unstable.ryujinx
+    ryujinx
     gqrx
     direwolf
     arduino

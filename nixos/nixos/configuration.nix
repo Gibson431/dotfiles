@@ -93,10 +93,10 @@
     enable = true;
   };
 
-  services.udev.packages = with pkgs; [
-    unstable.platformio-core
-    openocd
-  ];
+  # services.udev.packages = with pkgs; [
+  #   platformio-core
+  #   openocd
+  # ];
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -168,7 +168,7 @@
     python3
     python311Packages.pip
     python311Packages.stdenv
-    unstable.platformio
+    platformio
     esptool
     blueman
     pciutils
