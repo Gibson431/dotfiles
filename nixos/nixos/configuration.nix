@@ -171,6 +171,7 @@
     unstable.platformio
     esptool
     blueman
+    pciutils
     # ssh
     # obs-studio
   ];
