@@ -3,8 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -12,7 +11,6 @@
     self,
     nixpkgs,
     home-manager,
-    nixpkgs-unstable,
     ...
   }: let
     # overlay-unstable = final: prev: {
@@ -32,7 +30,7 @@
     nixosConfigurations.nixos-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       # specialArgs = {inherit unstable;};
-      modules =common-modules ++ [./hardware/pc-configuration.nix];
+      modules = common-modules ++ [./hardware/pc-configuration.nix];
     };
     nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
