@@ -66,6 +66,6 @@
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 }
