@@ -11,5 +11,6 @@
     gqrx
     direwolf
     arduino
+    vlc
   ];
 }
