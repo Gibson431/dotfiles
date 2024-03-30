@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-export DOTFILES="$HOME/dotfiles/"
+export DOTFILES="$HOME/dotfiles"
 
 alias sb="source ~/.bashrc"
 alias piob="pio run -t compiledb"
@@ -16,7 +16,7 @@ alias ec="edit_config"
 
 edit_vim_config() {
 	directory=$PWD
-	cd "$DOTFILES/config/nvim" || return
+	cd "$DOTFILES/.config/nvim" || return
 	nvim .
 	cd "$directory" || return
 }

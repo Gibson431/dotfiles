@@ -27,7 +27,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # User specific environment and startup programs
-if [ -f $HOME/.cargo ]; then
+if [ -f $HOME/.cargo/env ]; then
 	. "$HOME/.cargo/env"
 fi
 
