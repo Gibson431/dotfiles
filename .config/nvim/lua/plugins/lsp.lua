@@ -81,7 +81,7 @@ return {
             end
 
             require("mason").setup { ui = { border = "rounded" } }
-            require("mason-lspconfig").setup { ensure_installed = { "lua_ls", "bashls", "nixpkgs-fmt"} }
+            require("mason-lspconfig").setup { ensure_installed = { "lua_ls", "bashls" } }
             require("mason-lspconfig").setup_handlers {
                 function(server_name)
                     lspconfig[server_name].setup {}
