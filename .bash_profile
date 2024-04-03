@@ -4,3 +4,4 @@ export PATH=$PATH:$HOME/.local/scripts
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
+. "$HOME/.cargo/env"
