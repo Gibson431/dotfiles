@@ -24,5 +24,3 @@ alias evc="edit_vim_config"
 
 alias rebuild="rebuild.bash"
 
-. "$HOME/.cargo/env"
-eval "$(starship init bash)"
