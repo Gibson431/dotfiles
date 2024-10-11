@@ -3,7 +3,7 @@
 export DOTFILES="$HOME/dotfiles"
 
 alias sb="source ~/.bashrc"
-alias piob="pio run -t compiledb"
+alias piob="pio run -t compiledb && pio init --ide vim"
 alias gs="git status"
 
 edit_config() {
@@ -31,3 +31,11 @@ sau() {
 	sudo apt upgrade
 	flatpak update
 }
+
+nix-update() {
+	cd $DOTFILES/nixos
+	nix flake update
+	sudo nixos-rebuild switch --flake .#$($HOSTNAME) --impure
+	cd -
+}
+alias nu="nix-update"

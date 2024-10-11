@@ -121,7 +121,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. "$HOME/.cargo/env"
 
 export PATH="$PATH:$HOME/.platformio/penv/bin"
 export PATH="$PATH:$HOME/.local/bin"
