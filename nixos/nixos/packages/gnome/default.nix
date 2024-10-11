@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  gnome = with pkgs.gnome; [
+  gnome = with pkgs; [
     gnome-boxes
     gnome-tweaks
   ];
@@ -17,7 +17,7 @@ in {
       gnome-tour
       gedit # text editor
     ])
-    ++ (with pkgs.gnome; [
+    ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       gnome-terminal

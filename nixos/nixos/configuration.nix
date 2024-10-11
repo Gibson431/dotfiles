@@ -73,7 +73,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -89,7 +88,7 @@
     #media-session.enable = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
@@ -136,7 +135,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.users.main = {pkgs, ...}: {
     nixpkgs.config.allowUnfree = true;
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
   };
 
   # Enable DLL
@@ -161,6 +160,7 @@
     rustup
     gcc
     nodejs
+    spotify
     # gnome.gnome-boxes
     ccls
     virt-manager
@@ -172,6 +172,8 @@
     esptool
     blueman
     pciutils
+    helix
+    gof5
     # ssh
     # obs-studio
   ];
@@ -218,5 +220,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
