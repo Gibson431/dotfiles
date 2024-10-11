@@ -25,3 +25,9 @@ alias evc="edit_vim_config"
 alias rebuild="rebuild.bash"
 
 alias ehc="hx $DOTFILES/.config/helix/"
+
+sau() {
+	sudo apt update 
+	sudo apt upgrade
+	flatpak update
+}
