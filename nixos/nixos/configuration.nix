@@ -174,6 +174,7 @@
     pciutils
     helix
     gof5
+    openrocket
     # ssh
     # obs-studio
   ];
