@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # imports = [
@@ -147,37 +148,78 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = 
+  # utils
+  (with pkgs; [
     glibcLocales
     git
-    # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neofetch
+    git-lfs
     wget
-    # _1password
-    # _1password-gui
-    # gnome.gnome-tweaks
     alejandra
     rustup
     gcc
     nodejs
-    spotify
-    # gnome.gnome-boxes
     ccls
     virt-manager
     usbutils
     python3
+    python310
+    python310Packages.numpy
+    python310Packages.tkinter
     python311Packages.pip
     python311Packages.stdenv
-    platformio
-    esptool
+    python312
+    python312Packages.numpy
+    python312Packages.tkinter  
+    graphviz
+    tk
+    zlib
     blueman
     pciutils
+    libGL
+    fontconfig
+    libxkbcommon
+    freetype
+    dbus
+  ]) 
+  ++ 
+  # apps
+  (with pkgs; [
+    # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neofetch
+    # _1password
+    # _1password-gui
+    # gnome.gnome-tweaks
+    libreoffice
+    kicad
+    spotify
+    # gnome.gnome-boxes
+    proton-pass
+    protonvpn-gui
+    platformio
+    esptool
     helix
     gof5
     openrocket
     # ssh
     # obs-studio
-  ];
+  ]);
+
+  environment.variables = {
+    LD_LIBRARY_PATH = lib.mkForce "${with pkgs; lib.makeLibraryPath [
+      pipewire 
+      zlib 
+      xorg.libX11 
+      xorg.libXi 
+      stdenv.cc.cc.lib
+      glib
+      glibc
+      gcc      
+    ]}";
+  };
+
+
+  services.flatpak.enable = true;
 
   # Change default programs
   # programs = {

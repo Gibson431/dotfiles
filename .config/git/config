@@ -1,0 +1,21 @@
+[commit]
+	gpgsign = true
+
+[core]
+	editor = "hx"
+
+[gpg]
+	format = "ssh"
+
+[push]
+	autoSetupRemote = true
+
+[user]
+	email = "timmaxgibson@gmail.com"
+	name = "Gibson431"
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEtaYVm8RCmHQCPhvfzJwxpF0rXGBBR5n27aRL1rAdXN"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
