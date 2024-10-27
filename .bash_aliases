@@ -5,22 +5,14 @@ export DOTFILES="$HOME/dotfiles"
 alias sb="source ~/.bashrc"
 alias piob="pio run -t compiledb && pio init --ide vim"
 alias gs="git status"
+alias ns="nix-shell ."
 
-edit_config() {
-	directory=$PWD
+edit-config() {
 	cd "$DOTFILES" || return
-	nvim .
-	cd "$directory" || return
+	hx .
+	cd "-" || return
 }
-alias ec="edit_config"
-
-edit_vim_config() {
-	directory=$PWD
-	cd "$DOTFILES/.config/nvim" || return
-	nvim .
-	cd "$directory" || return
-}
-alias evc="edit_vim_config"
+alias ec="edit-config"
 
 alias rebuild="rebuild.bash"
 
@@ -33,9 +25,16 @@ sau() {
 }
 
 nix-update() {
-	cd $DOTFILES/nixos
+	cd "$DOTFILES/nixos" || return
 	nix flake update
 	sudo nixos-rebuild switch --flake .#$($HOSTNAME) --impure
-	cd -
+	cd "-"
 }
 alias nu="nix-update"
+
+edit-nix-config() {
+	cd "$DOTFILES/nixos" || return 
+	hx .
+	cd "-"
+}
+alias enc="edit-nix-config"

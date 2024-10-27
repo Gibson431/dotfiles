@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{ config, pkgs, lib, ... }: {
   # imports = [
   # Include the results of the hardware scan.
   # ./hardware-configuration.nix
@@ -14,8 +9,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernel.sysctl."net.core.rmem_max" = 26214400;
+  boot.kernel.sysctl."net.core.rmem_default" = 26214400;
+
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable auto updates
   system.autoUpgrade = {
@@ -89,9 +87,7 @@
     #media-session.enable = true;
   };
 
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics = { enable = true; };
 
   # services.udev.packages = with pkgs; [
   #   platformio-core
@@ -102,9 +98,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -134,90 +128,92 @@
   nixpkgs.config.allowUnfree = true;
 
   home-manager.useGlobalPkgs = true;
-  home-manager.users.main = {pkgs, ...}: {
+  home-manager.users.main = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
     home.stateVersion = "24.05";
   };
 
   # Enable DLL
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
+  programs.nix-ld.libraries = [
     # Add any missing DLL for unpackaged
     # programs here, NOT in environment.systemPackages
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = 
-  # utils
-  (with pkgs; [
-    glibcLocales
-    git
-    git-lfs
-    wget
-    alejandra
-    rustup
-    gcc
-    nodejs
-    ccls
-    virt-manager
-    usbutils
-    python3
-    python310
-    python310Packages.numpy
-    python310Packages.tkinter
-    python311Packages.pip
-    python311Packages.stdenv
-    python312
-    python312Packages.numpy
-    python312Packages.tkinter  
-    graphviz
-    tk
-    zlib
-    blueman
-    pciutils
-    libGL
-    fontconfig
-    libxkbcommon
-    freetype
-    dbus
-  ]) 
-  ++ 
-  # apps
-  (with pkgs; [
-    # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neofetch
-    # _1password
-    # _1password-gui
-    # gnome.gnome-tweaks
-    libreoffice
-    kicad
-    spotify
-    # gnome.gnome-boxes
-    proton-pass
-    protonvpn-gui
-    platformio
-    esptool
-    helix
-    gof5
-    openrocket
-    # ssh
-    # obs-studio
-  ]);
+  environment.systemPackages =
+    # utils
+    (with pkgs; [
+      glibcLocales
+      git
+      git-lfs
+      wget
+      alejandra
+      rustup
+      gcc
+      nodejs
+      ccls
+      nixfmt
+      virt-manager
+      usbutils
+      python3
+      python310
+      python310Packages.numpy
+      python310Packages.tkinter
+      python311Packages.pip
+      python311Packages.stdenv
+      python312
+      python312Packages.numpy
+      python312Packages.tkinter
+      graphviz
+      tk
+      zlib
+      blueman
+      pciutils
+      libGL
+      fontconfig
+      libxkbcommon
+      freetype
+      dbus
+      xsel
+      nil
+    ]) ++
+    # apps
+    (with pkgs; [
+      # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      neofetch
+      # _1password
+      # _1password-gui
+      # gnome.gnome-tweaks
+      libreoffice
+      spotify
+      # gnome.gnome-boxes
+      proton-pass
+      protonvpn-gui
+      platformio
+      esptool
+      helix
+      gof5
+      openrocket
+      calibre
+      # ssh
+      # obs-studio
+    ]);
 
-  environment.variables = {
-    LD_LIBRARY_PATH = lib.mkForce "${with pkgs; lib.makeLibraryPath [
-      pipewire 
-      zlib 
-      xorg.libX11 
-      xorg.libXi 
-      stdenv.cc.cc.lib
-      glib
-      glibc
-      gcc      
-    ]}";
-  };
-
+  # environment.variables = {
+  #   LD_LIBRARY_PATH = lib.mkForce "${with pkgs;
+  #     lib.makeLibraryPath [
+  #       pipewire
+  #       zlib
+  #       xorg.libX11
+  #       xorg.libXi
+  #       stdenv.cc.cc.lib
+  #       glib
+  #       glibc
+  #       gcc
+  #     ]}";
+  # };
 
   services.flatpak.enable = true;
 
@@ -234,9 +230,7 @@
   #   };
   # };
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
+  fonts.packages = with pkgs; [ nerdfonts ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
