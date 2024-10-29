@@ -9,8 +9,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernel.sysctl."net.core.rmem_max" = 26214400;
-  boot.kernel.sysctl."net.core.rmem_default" = 26214400;
+  boot.kernel.sysctl = {
+    "net.core.rmem_max" = 26214400;
+    "net.core.rmem_default" = 26214400;
+  };
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -154,6 +156,7 @@
       gcc
       nodejs
       ccls
+      ffmpeg
       nixfmt
       virt-manager
       usbutils
@@ -195,25 +198,13 @@
       esptool
       helix
       gof5
+      vlc
+      obsidian
       openrocket
       calibre
       # ssh
       # obs-studio
     ]);
-
-  # environment.variables = {
-  #   LD_LIBRARY_PATH = lib.mkForce "${with pkgs;
-  #     lib.makeLibraryPath [
-  #       pipewire
-  #       zlib
-  #       xorg.libX11
-  #       xorg.libXi
-  #       stdenv.cc.cc.lib
-  #       glib
-  #       glibc
-  #       gcc
-  #     ]}";
-  # };
 
   services.flatpak.enable = true;
 
