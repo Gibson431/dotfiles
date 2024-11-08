@@ -156,6 +156,7 @@
       gcc
       nodejs
       ccls
+      fzf
       ffmpeg
       nixfmt
       virt-manager
@@ -181,6 +182,7 @@
       dbus
       xsel
       nil
+      texliveFull
     ]) ++
     # apps
     (with pkgs; [
@@ -198,10 +200,12 @@
       esptool
       helix
       gof5
+      warpinator
       vlc
       obsidian
       openrocket
       calibre
+      davinci-resolve
       # ssh
       # obs-studio
     ]);
@@ -241,6 +245,19 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    allowedTCPPorts = [
+      # warpinator
+      42000
+      42001
+      #spotify local fs sync
+      57621
+    ];
+    allowedUDPPorts = [
+      # warpinator, spotify local discover
+      5353
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
