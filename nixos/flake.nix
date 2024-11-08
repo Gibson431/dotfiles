@@ -37,7 +37,7 @@
       };
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = common-modules ++ hardware-module
+        modules = common-modules ++ hardware-module ++ cosmic-module
           ++ [ ./hardware/zenbook-configuration.nix ];
       };
     };
