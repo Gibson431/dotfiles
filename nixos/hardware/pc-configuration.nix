@@ -6,7 +6,6 @@ in {
   imports = [ ./nvidia.nix ];
 
   networking.hostName = "nixos-pc"; # Define your hostname.
-  services.desktopManager.cosmic.enable = true;
 
   # Star citizen https://wiki.nixos.org/wiki/Star_Citizen
   boot.kernel.sysctl = {
