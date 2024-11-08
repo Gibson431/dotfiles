@@ -38,3 +38,10 @@ edit-nix-config() {
 	cd "-"
 }
 alias enc="edit-nix-config"
+
+# based on https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+project-cd() {
+    selected=$(find $DOTFILES $HOME/Documents -type d -execdir 'test' '-d' '{}/.git' ';' -prune -print | fzf)
+    cd "$selected"
+}
+alias pcd="project-cd"
