@@ -9,6 +9,6 @@
     ryujinx
     gqrx
     direwolf
-    arduino
+    arduino-ide
   ];
 }
