@@ -170,6 +170,7 @@
       python312
       python312Packages.numpy
       python312Packages.tkinter
+      python312Packages.python-lsp-server
       graphviz
       tk
       zlib
