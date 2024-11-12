@@ -156,6 +156,8 @@
       gcc
       nodejs
       ccls
+      elf2uf2-rs
+      taplo
       fzf
       ffmpeg
       nixfmt
