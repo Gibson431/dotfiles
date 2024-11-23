@@ -26,7 +26,7 @@ sau() {
 
 nix-update() {
 	cd "$DOTFILES/nixos" || return
-	nix flake update
+	# nix flake update
 	sudo nixos-rebuild switch --flake .#$($HOSTNAME) --impure
 	cd "-"
 }
