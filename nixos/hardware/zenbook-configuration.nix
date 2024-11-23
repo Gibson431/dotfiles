@@ -4,4 +4,12 @@
   networking.hostName = "nixos-laptop"; # Define your hostname.
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
   environment.systemPackages = [ pkgs.libinput ];
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8 * 1024; # 8 GB Swap
+  }];
+  zramSwap = {
+    enable = true;
+    memoryMax = 32 * 1024 * 1024 * 1024; # 16 GB ZRAM
+  };
 }
