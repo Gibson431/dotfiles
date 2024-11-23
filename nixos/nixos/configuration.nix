@@ -186,6 +186,14 @@
       xsel
       nil
       texliveFull
+      intel-gmmlib
+      intel-media-driver
+      intel-ocl
+      libvdpau-va-gl
+      vaapiIntel
+      vaapiVdpau
+      x264
+      openh264
     ]) ++
     # apps
     (with pkgs; [
@@ -205,10 +213,13 @@
       gof5
       warpinator
       vlc
+      libvlc
       obsidian
       openrocket
       calibre
       davinci-resolve
+      kdenlive
+      lutris
       # ssh
       # obs-studio
     ]);
