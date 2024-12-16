@@ -2,6 +2,7 @@
   # imports = [];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
   environment.systemPackages = [ pkgs.libinput ];
   swapDevices = [{

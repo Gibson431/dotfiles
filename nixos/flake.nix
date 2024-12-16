@@ -3,9 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
   };
 
@@ -33,7 +38,7 @@
     in {
       nixosConfigurations.nixos-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = common-modules ++ hardware-module ++ cosmic-module
+        modules = common-modules ++ hardware-module
           ++ [ ./de/gnome.nix ./hardware/pc-configuration.nix ];
       };
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {

@@ -1,13 +1,10 @@
 { config, pkgs, lib, ... }: {
-  # imports = [
-  # Include the results of the hardware scan.
-  # ./hardware-configuration.nix
-  # ];
+  # imports = [];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "modprobe.blacklist=dvb_usb_rtl28xxu" ];
 
   boot.kernel.sysctl = {
     "net.core.rmem_max" = 26214400;
@@ -19,7 +16,7 @@
 
   # Enable auto updates
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     flags = [
       "--update-input"
       "nixpkgs"
@@ -49,7 +46,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm = {
   #   enable = true;
   #   wayland = true;
@@ -58,12 +54,8 @@
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
 
-  # Configure keymap in X11
-  services.xserver = {
+    # Configure keymap in X11
     xkb = {
       layout = "au";
       variant = "";
@@ -89,12 +81,11 @@
     #media-session.enable = true;
   };
 
-  hardware.graphics = { enable = true; };
-
-  # services.udev.packages = with pkgs; [
-  #   platformio-core
-  #   openocd
-  # ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages =
+      (with pkgs; [ intel-media-driver intel-ocl intel-vaapi-driver ]);
+  };
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -114,15 +105,10 @@
   users.users.main = {
     isNormalUser = true;
     description = "main";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "kvm"
-      "dialout"
-      "lock"
-      "uucp"
-      "plugdev"
+    extraGroups =
+      [ "networkmanager" "wheel" "docker" "kvm" "dialout" "lock" "uucp" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEtaYVm8RCmHQCPhvfzJwxpF0rXGBBR5n27aRL1rAdXN"
     ];
   };
 
@@ -144,85 +130,88 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages =
-    # utils
-    (with pkgs; [
-      glibcLocales
-      git
-      git-lfs
-      wget
-      alejandra
-      rustup
-      gcc
-      nodejs
-      ccls
-      elf2uf2-rs
-      taplo
-      fzf
-      ffmpeg
-      nixfmt
-      virt-manager
-      usbutils
-      python3
-      python310
-      python310Packages.numpy
-      python310Packages.tkinter
-      python311Packages.pip
-      python311Packages.stdenv
-      python312
-      python312Packages.numpy
-      python312Packages.tkinter
-      python312Packages.python-lsp-server
-      graphviz
-      tk
-      zlib
-      blueman
-      pciutils
-      libGL
-      fontconfig
-      libxkbcommon
-      freetype
-      dbus
-      xsel
-      nil
-      texliveFull
-      intel-gmmlib
-      intel-media-driver
-      intel-ocl
-      libvdpau-va-gl
-      vaapiIntel
-      vaapiVdpau
-      x264
-      openh264
-    ]) ++
+  environment.systemPackages = (with pkgs; [
+    # libs
+    graphviz
+    python3
+    python310
+    python310Packages.numpy
+    python310Packages.tkinter
+    python310Packages.setuptools
+    python312
+    python312Packages.numpy
+    python312Packages.tkinter
+    python312Packages.python-lsp-server
+    python312Packages.setuptools
+    tk
+    glibcLocales
+    wget
+    ffmpeg
+    virt-manager
+    usbutils
+    zlib
+    pciutils
+    libGL
+    fontconfig
+    libxkbcommon
+    freetype
+    dbus
+    xsel
+    nil
+    texliveFull
+    intel-gmmlib
+    libvdpau-va-gl
+    vaapiIntel
+    vaapiVdpau
+    x264
+    openh264
+    xorg.xhost
+    gcc-arm-embedded
+
+    # lsp + compilers
+    alejandra
+    rustup
+    gcc
+    nodejs
+    ccls
+    taplo
+    nixfmt
+
+    # tools
+    elf2uf2-rs
+    esptool
+    fzf
+    git
+    git-lfs
+    helix
+    platformio
+    wl-clipboard
+    stow
+    tmux
+    tmux-sessionizer
+    direwolf
+
     # apps
-    (with pkgs; [
-      # neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      neofetch
-      # _1password
-      # _1password-gui
-      # gnome.gnome-tweaks
-      libreoffice
-      spotify
-      # gnome.gnome-boxes
-      proton-pass
-      protonvpn-gui
-      platformio
-      esptool
-      helix
-      gof5
-      warpinator
-      vlc
-      libvlc
-      obsidian
-      openrocket
-      calibre
-      davinci-resolve
-      kdenlive
-      lutris
-      # ssh
-      # obs-studio
-    ]);
+    fastfetch
+    libreoffice
+    spotify
+    proton-pass
+    protonvpn-gui
+    gof5
+    warpinator
+    vlc
+    libvlc
+    obs-studio
+    obsidian
+    openrocket
+    calibre
+    davinci-resolve
+    kdenlive
+    thunderbird
+    stremio
+    ryujinx
+    arduino-ide
+  ]);
 
   services.flatpak.enable = true;
 
@@ -239,7 +228,7 @@
   #   };
   # };
 
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -252,26 +241,31 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = { PasswordAuthentication = false; };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall = {
-    allowedTCPPorts = [
-      # warpinator
-      42000
-      42001
-      #spotify local fs sync
-      57621
-    ];
-    allowedUDPPorts = [
-      # warpinator, spotify local discover
-      5353
-    ];
-  };
+  networking.firewall.enable = false;
+  # networking.firewall = {
+  #   allowedTCPPorts = [
+  #     # warpinator
+  #     42000
+  #     42001
+  #     # spotify local fs sync
+  #     57621
+  #     # calibre-web
+  #     8083
+  #   ];
+  #   allowedUDPPorts = [
+  #     # warpinator, spotify local discover
+  #     5353
+  #   ];
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

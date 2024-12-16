@@ -4,10 +4,10 @@
   hardware = {
     graphics.enable = true;
     nvidia = {
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
       open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      nvidiaSettings = true;
+      modesetting.enable = true;
     };
   };
-
 }

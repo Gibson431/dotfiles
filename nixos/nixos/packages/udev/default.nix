@@ -1,6 +1,1 @@
-{pkgs, ...}: {
-  services.udev.packages = with pkgs; [
-    openocd
-    platformio
-  ];
-}
+{ pkgs, ... }: { services.udev.packages = with pkgs; [ openocd platformio ]; }
