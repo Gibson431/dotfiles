@@ -6,6 +6,7 @@ alias sb="source ~/.bashrc"
 alias piob="pio run -t compiledb && pio init --ide vim"
 alias gs="git status"
 alias ns="nix-shell ."
+alias nd="nix develop"
 
 edit-config() {
 	cd "$DOTFILES" || return
@@ -27,7 +28,7 @@ sau() {
 nix-update() {
 	cd "$DOTFILES/nixos" || return
 	# nix flake update
-	sudo nixos-rebuild switch --flake .#$($HOSTNAME) --impure
+	sudo nixos-rebuild switch --flake .#$HOSTNAME --impure
 	cd "-"
 }
 alias nu="nix-update"
