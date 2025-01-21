@@ -133,16 +133,12 @@
   environment.systemPackages = (with pkgs; [
     # libs
     graphviz
-    python3
-    python310
-    python310Packages.numpy
-    python310Packages.tkinter
-    python310Packages.setuptools
     python312
     python312Packages.numpy
     python312Packages.tkinter
     python312Packages.python-lsp-server
     python312Packages.setuptools
+    python312Packages.pip
     tk
     glibcLocales
     wget
@@ -167,6 +163,7 @@
     openh264
     xorg.xhost
     gcc-arm-embedded
+    direnv
 
     # lsp + compilers
     alejandra
@@ -179,6 +176,7 @@
 
     # tools
     elf2uf2-rs
+    probe-rs
     esptool
     fzf
     git
@@ -190,6 +188,7 @@
     tmux
     tmux-sessionizer
     direwolf
+    gdb
 
     # apps
     fastfetch
@@ -211,6 +210,7 @@
     stremio
     ryujinx
     arduino-ide
+    stm32cubemx
   ]);
 
   services.flatpak.enable = true;
