@@ -5,7 +5,7 @@ let
 in {
   imports = [ ./nvidia.nix ];
 
-  networking.hostName = "nixos-pc"; # Define your hostname.
+  networking.hostName = "banksy"; # Define your hostname.
 
   # Star citizen https://wiki.nixos.org/wiki/Star_Citizen
   boot.kernel.sysctl = {

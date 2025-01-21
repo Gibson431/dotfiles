@@ -36,15 +36,15 @@
       ];
 
     in {
-      nixosConfigurations.nixos-pc = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.banksy = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common-modules ++ hardware-module
-          ++ [ ./de/gnome.nix ./hardware/pc-configuration.nix ];
+          ++ [ ./de/gnome.nix ./hardware/banksy-configuration.nix ];
       };
-      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.midnight = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common-modules ++ hardware-module
-          ++ [ ./de/gnome.nix ./hardware/zenbook-configuration.nix ];
+          ++ [ ./de/gnome.nix ./hardware/midnight-configuration.nix ];
       };
     };
 }
