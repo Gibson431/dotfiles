@@ -12,7 +12,7 @@ in {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;
   };
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   swapDevices = [{
     device = "/var/lib/swapfile";
