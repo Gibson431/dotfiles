@@ -17,8 +17,16 @@ roots = [".ccls"]
 auto-format = true
 language-servers = ["cc-ls"]
 
+[[language]]
+name = "c"
+auto-format = true
+language-servers = ["clangd"]
+
 [language-server.cc-ls]
 command = "ccls"
+
+[language-server.clangd]
+command = "clangd"
 
 [[language]]
 name = "toml"
@@ -68,4 +76,4 @@ source = { git = "https://github.com/justinmk/tree-sitter-ini", rev = "1b0498a89
 [[language]]
 name = "nix"
 auto-format = true
-formatter = {command = "nixfmt"}
+formatter = { command = "nixfmt" }
