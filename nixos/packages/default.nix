@@ -102,5 +102,8 @@ in {
     vscode
   ]);
 
-  programs = { starship.enable = true; };
+  programs = {
+    starship.enable = true;
+    neovim.enable = true;
+  };
 }
