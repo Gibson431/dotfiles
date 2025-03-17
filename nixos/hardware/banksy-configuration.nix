@@ -3,7 +3,7 @@ let
   nix-gaming = import (builtins.fetchTarball
     "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 in {
-  imports = [ ./nvidia.nix ];
+  imports = [ ./graphics/nvidia.nix ];
 
   networking.hostName = "banksy"; # Define your hostname.
 

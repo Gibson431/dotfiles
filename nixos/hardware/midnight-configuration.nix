@@ -1,5 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }: {
-  # imports = [];
+  imports = [ ./graphics/intel.nix ];
 
   networking.hostName = "midnight"; # Define your hostname.
   boot.kernelPackages = pkgs.linuxPackages_latest;

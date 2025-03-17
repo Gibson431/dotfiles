@@ -2,22 +2,19 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+      # follows = "nixos-cosmic/nixpkgs";
     };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-cosmic, ... }:
+  outputs = { self, nixpkgs, nixos-cosmic, ... }:
     let
-      common-modules =
-        [ ./nixos home-manager.nixosModules.home-manager ./home-manager ];
+      common-modules = [ ./configuration.nix ./packages ];
 
       hardware-module = [ /etc/nixos/hardware-configuration.nix ];
 

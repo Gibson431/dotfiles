@@ -126,5 +126,3 @@ export PATH="$PATH:$HOME/.platformio/penv/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/go/bin"
 export PATH="$PATH:$HOME/go/bin"
-
-eval "$(starship init bash)"
