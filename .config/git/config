@@ -5,7 +5,7 @@
 	autoSetupRemote = true
 
 [user]
-	email = "timmaxgibson@gmail.com"
+	email = timmaxgibson@gmail.com
 	name = "Gibson431"
 	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEtaYVm8RCmHQCPhvfzJwxpF0rXGBBR5n27aRL1rAdXN"
 

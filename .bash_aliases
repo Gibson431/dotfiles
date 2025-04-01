@@ -33,6 +33,11 @@ nix-update() {
 }
 alias nu="nix-update"
 
+nix-clean() {
+	nix-collect-garbage &> /dev/null || echo "Failed to collect nix garbage"
+	nix-store --gc &> /dev/null
+}
+
 edit-nix-config() {
 	cd "$DOTFILES/nixos" || return 
 	hx .

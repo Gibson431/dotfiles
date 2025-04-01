@@ -1,34 +1,28 @@
-add_newline = false
-# A minimal left prompt
-format = """$hostname$directory$git_branch$python$character"""
+format = """
+$python\
+$nix_shell\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$character"""
 palette = "catppuccin_mocha"
 # move the rest of the prompt to the right
 # right_format = """$all"""
-
-[directory.substitutions]
-'~/tests/starship-custom' = 'work-project'
+add_newline = false
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "purple"
+
 [python]
 format = '[(\($virtualenv\) )]($style)'
 
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
-symbol = "  "
-
 [golang]
 format = '[ ](bold cyan)'
-
-[kubernetes]
-symbol = '☸ '
-disabled = false
-detect_files = ['Dockerfile']
-format = '[$context(\[$namespace\])]($style) '
-[kubernetes.context_aliases]
-'arn:aws:eks:us-west-2:577926974532:cluster/gal-kub-demo-cluster' = 'gal'
 
 [docker_context]
 disabled = true

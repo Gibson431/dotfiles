@@ -18,18 +18,14 @@ in {
   imports = importedPackages;
 
   environment.systemPackages = (with pkgs; [
-    # libs
-    graphviz
-    python312
-    python312Packages.numpy
-    python312Packages.tkinter
-    python312Packages.python-lsp-server
-    python312Packages.setuptools
-    python312Packages.pip
-    tk
-    glibcLocales
-    wget
-    ffmpeg
+    intel-gmmlib
+    libvdpau-va-gl
+    vaapiIntel
+    vaapiVdpau
+    x264
+    openh264
+    xorg.xhost
+
     virt-manager
     usbutils
     zlib
@@ -41,65 +37,11 @@ in {
     dbus
     xsel
     nil
-    texliveFull
-    intel-gmmlib
-    libvdpau-va-gl
-    vaapiIntel
-    vaapiVdpau
-    x264
-    openh264
-    xorg.xhost
     gcc-arm-embedded
-    direnv
     xwayland
-
-    # lsp + compilers
-    alejandra
-    rustup
-    gcc
-    nodejs
-    ccls
-    taplo
-    nixfmt-classic
-
-    # tools
-    elf2uf2-rs
-    probe-rs
-    esptool
-    fzf
-    git
-    git-lfs
-    helix
-    platformio
-    wl-clipboard
     stow
-    tmux
     tmux-sessionizer
-    direwolf
-    gdb
-
-    # apps
-    fastfetch
-    libreoffice
-    spotify
-    proton-pass
-    protonvpn-gui
-    gof5
-    warpinator
-    vlc
-    libvlc
-    obs-studio
-    obsidian
-    openrocket
-    calibre
-    davinci-resolve
-    kdePackages.kdenlive
-    thunderbird
-    stremio
-    ryujinx
-    arduino-ide
-    stm32cubemx
-    vscode
+    helix
   ]);
 
   programs = {

@@ -6,7 +6,7 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "lua", "pascal", "cpp", "bash" },
+                ensure_installed = { "lua", "pascal", "c", "cpp", "bash" },
                 highlight = { enable = true },
             }
         end,
