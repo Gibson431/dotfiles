@@ -13,6 +13,7 @@ let
     git-lfs
     helix
     wl-clipboard
+    kitty
     tmux
     tmux-sessionizer
     direwolf

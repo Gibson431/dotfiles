@@ -1,10 +1,10 @@
 format = """
 $python\
-$nix_shell\
 $hostname\
 $directory\
 $git_branch\
 $git_state\
+$nix_shell\
 $character"""
 palette = "catppuccin_mocha"
 # move the rest of the prompt to the right
@@ -21,11 +21,15 @@ style = "purple"
 [python]
 format = '[(\($virtualenv\) )]($style)'
 
+[nix_shell]
+format = '[$symbol ]($style)'
+symbol = '❄️'
+
 [golang]
 format = '[ ](bold cyan)'
 
 [docker_context]
-disabled = true
+disabled = false
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

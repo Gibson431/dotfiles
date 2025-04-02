@@ -40,8 +40,8 @@
       };
       nixosConfigurations.midnight = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = common-modules ++ hardware-module
-          ++ [ ./de/gnome.nix ./hardware/midnight-configuration.nix ];
+        modules = common-modules ++ hardware-module ++ cosmic-module
+          ++ [ ./hardware/midnight-configuration.nix ];
       };
     };
 }

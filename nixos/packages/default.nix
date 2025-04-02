@@ -42,6 +42,7 @@ in {
     stow
     tmux-sessionizer
     helix
+    fastfetch
   ]);
 
   programs = {
