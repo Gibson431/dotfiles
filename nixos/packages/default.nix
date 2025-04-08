@@ -25,6 +25,7 @@ in {
     x264
     openh264
     xorg.xhost
+    unzip
 
     virt-manager
     usbutils
@@ -39,10 +40,7 @@ in {
     nil
     gcc-arm-embedded
     xwayland
-    stow
-    tmux-sessionizer
-    helix
-    fastfetch
+    obsidian
   ]);
 
   programs = {

@@ -15,10 +15,22 @@ let
     wl-clipboard
     kitty
     tmux
+    stow
+    helix
+    fastfetch
     tmux-sessionizer
     direwolf
-    gdb
     direnv
+    vscode
+
+    # dev tools
+    clang
+    clang-tools
+    gcc
+    ccls
+    rust-analyzer
+    gdb
+    nodejs_23
   ];
   packages = [ glibcLocales wget ffmpeg texliveFull ];
 in {

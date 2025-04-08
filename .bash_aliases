@@ -7,6 +7,7 @@ alias piob="pio run -t compiledb && pio init --ide vim"
 alias gs="git status"
 alias ns="nix-shell ."
 alias nd="nix develop"
+alias nv="nvim"
 
 edit-config() {
 	cd "$DOTFILES" || return

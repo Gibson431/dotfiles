@@ -27,7 +27,7 @@
             ];
           };
           services.desktopManager.cosmic.enable = true;
-          services.displayManager.cosmic-greeter.enable = true;
+          # services.displayManager.cosmic-greeter.enable = true;
         }
         nixos-cosmic.nixosModules.default
       ];
@@ -36,12 +36,12 @@
       nixosConfigurations.banksy = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common-modules ++ hardware-module ++ cosmic-module
-          ++ [ ./hardware/banksy-configuration.nix ];
+          ++ [ ./de/gnome.nix ./hardware/banksy-configuration.nix ];
       };
       nixosConfigurations.midnight = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common-modules ++ hardware-module ++ cosmic-module
-          ++ [ ./hardware/midnight-configuration.nix ];
+          ++ [ ./de/gnome.nix ./hardware/midnight-configuration.nix ];
       };
     };
 }
