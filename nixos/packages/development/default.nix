@@ -22,6 +22,7 @@ let
     direwolf
     direnv
     vscode
+    ripgrep
 
     # dev tools
     clang
@@ -30,7 +31,6 @@ let
     ccls
     rust-analyzer
     gdb
-    nodejs_23
   ];
   packages = [ glibcLocales wget ffmpeg texliveFull ];
 in {

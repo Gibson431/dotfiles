@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
-      follows = "nixos-cosmic/nixpkgs";
+      # follows = "nixos-cosmic/nixpkgs";
     };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -35,8 +35,8 @@
     in {
       nixosConfigurations.banksy = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = common-modules ++ hardware-module ++ cosmic-module
-          ++ [ ./de/gnome.nix ./hardware/banksy-configuration.nix ];
+        modules = common-modules ++ hardware-module
+          ++ [ ./de/hypr.nix ./hardware/banksy-configuration.nix ];
       };
       nixosConfigurations.midnight = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -11,14 +11,12 @@ alias nv="nvim"
 
 edit-config() {
 	cd "$DOTFILES" || return
-	hx .
+	nvim .
 	cd "-" || return
 }
 alias ec="edit-config"
 
 alias rebuild="rebuild.bash"
-
-alias ehc="hx $DOTFILES/.config/helix/"
 
 sau() {
 	sudo apt update 
@@ -41,10 +39,15 @@ nix-clean() {
 
 edit-nix-config() {
 	cd "$DOTFILES/nixos" || return 
-	hx .
+	nvim .
 	cd "-"
 }
 alias enc="edit-nix-config"
+
+edit-hypr-config() {
+	nvim "$HOME/.config/hypr/hyprland.conf" || return 
+}
+alias ehc="edit-hypr-config"
 
 # based on https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 project-cd() {
