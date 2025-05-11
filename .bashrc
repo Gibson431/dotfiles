@@ -110,6 +110,16 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -127,4 +137,10 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 
-eval "$(direnv hook bash)"
+if command -v direnv 2>&1 >/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+if command -v starship 2>&1 >/dev/null; then
+    eval "$(starship init bash)"
+fi
