@@ -136,11 +136,3 @@ export PATH="$PATH:$HOME/.platformio/penv/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/go/bin"
 export PATH="$PATH:$HOME/go/bin"
-
-if command -v direnv 2>&1 >/dev/null; then
-    eval "$(direnv hook bash)"
-fi
-
-if command -v starship 2>&1 >/dev/null; then
-    eval "$(starship init bash)"
-fi
