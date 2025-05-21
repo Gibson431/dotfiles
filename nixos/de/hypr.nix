@@ -15,6 +15,8 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
+  services.blueman.enable = true;
+
   environment.systemPackages = with pkgs; [
     kitty
     hyprpaper
@@ -30,5 +32,6 @@
     wofi
     waybar
     nautilus
+    blueman
   ];
 }
