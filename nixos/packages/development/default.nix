@@ -23,6 +23,7 @@ let
     direnv
     vscode
     ripgrep
+	tldr
 
     # dev tools
     clang

@@ -33,5 +33,7 @@
     waybar
     nautilus
     blueman
+	pavucontrol
+	brightnessctl
   ];
 }
