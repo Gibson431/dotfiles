@@ -34,12 +34,10 @@ return {
         timeout_ms = 500,
       },
       servers = {
-        -- clangd = {},
-        -- gopls = {},
+        clangd = {},
         pyright = {},
         rust_analyzer = {},
         shellcheck = {},
-        ruff_lsp = {},
         stylua = {},
         cmake = {},
         lua_ls = {
@@ -95,7 +93,7 @@ return {
       vim.diagnostic.config {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
-        -- underline = { severity = vim.diagnostic.severity.ERROR },
+        underline = { severity = vim.diagnostic.severity.ERROR },
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -144,7 +142,10 @@ return {
 
       local servers = opts.servers
       local ensure_installed = vim.tbl_keys(servers or {})
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup {
+        ensure_installed = ensure_installed,
+        auto_update = true,
+      }
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (populate installs via mason-tool-installer)

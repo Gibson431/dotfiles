@@ -8,6 +8,7 @@ alias gs="git status"
 alias ns="nix-shell ."
 alias nd="nix develop"
 alias nv="nvim"
+alias j="just"
 
 edit-config() {
 	cd "$DOTFILES" || return

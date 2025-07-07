@@ -27,6 +27,11 @@ return {
     end,
   },
   {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+  },
+  {
     'nvim-telescope/telescope.nvim',
     opts = {
       defaults = {
@@ -44,7 +49,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
     },
-    config = function() end,
+    opts = {},
   },
   {
     'folke/noice.nvim',
@@ -56,6 +61,14 @@ return {
     opts = {
       cmdline = {
         view = 'cmdline',
+      },
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+        },
       },
       presets = { command_pallete = false },
     },
